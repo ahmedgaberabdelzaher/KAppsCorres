@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar" xmlns:controls="clr-namespace:CorresApp.Controls"
+    x:Class="CorresApp.Controls.Calender"
+    xmlns:translator="clr-namespace:CorresApp.Helpers">
+        <ContentView.Resources>
+        <ResourceDictionary>
+                 <Style x:Key="daysLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="5,2" />
+            </Style>
+            <Style x:Key="daysTitleLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+
+        <Grid>
+                         <plugin:Calendar x:Name="advancedCalendarPage" BackgroundColor="{StaticResource BackgroundColor}"
+        Padding="3,0" Margin="7,60,7,0"
+        AnimateCalendar="True"
+        DayViewCornerRadius="15"
+        DayViewSize="25"
+        DaysLabelStyle="{StaticResource daysLabelStyle}"
+        DaysTitleColor="Black"
+        DaysTitleHeight="18"
+        DaysTitleLabelStyle="{StaticResource daysTitleLabelStyle}"
+        DaysTitleMaximumLength="OneChar"
+        DeselectedDayTextColor="{StaticResource placHolderColor}"
+        DisableSwipeDetection="False"
+        EventIndicatorColor="Red"
+        EventIndicatorSelectedColor="IndianRed"
+        EventIndicatorSelectedTextColor="White"
+        EventIndicatorTextColor="Black"
+        EventIndicatorType="BottomDot"
+        HeaderSectionVisible="True"
+            Culture="{Binding CultureC}"                        
+        HorizontalOptions="FillAndExpand"
+        MonthLabelColor="Black"
+                     Events="{Binding Events}"
+        MonthYear="{Binding MonthYear}"
+        OtherMonthDayColor="Gray"
+        OtherMonthDayIsVisible="False"
+        SelectedDateColor="Red"
+                     SelectedDate="{Binding SelectedDate}"
+     
+        SelectedDayBackgroundColor="{StaticResource greenColor}"
+                         SwipeLeftCommand="{Binding SwipeLeftCommand}"
+        SwipeRightCommand="{Binding SwipeRightCommand}"
+        SwipeToChangeMonthEnabled="False"
+        SwipeUpCommand="{Binding SwipeUpCommand}"
+        SwipeUpToHideEnabled="False"
+        TodayFillColor="Silver"
+        TodayOutlineColor="Blue"
+        TodayTextColor="Yellow"
+        VerticalOptions="FillAndExpand"
+                                          SelectedDateTextFormat="dddd, dd MMM yyyy"
+        YearLabelColor="Blue">  <!----> 
+                           <plugin:Calendar.HeaderSectionTemplate>
+            <controls:CalendarHeader />
+        </plugin:Calendar.HeaderSectionTemplate>
+                         <plugin:Calendar.FooterSectionTemplate>
+            <DataTemplate>
+                <controls:CalendarFooter Margin="0,10,0,0"/>
+            </DataTemplate>
+        </plugin:Calendar.FooterSectionTemplate>
+                             
+                            <plugin:Calendar.EventTemplate>
+            <DataTemplate>
+                     <Grid Margin="5,5,10,5" Padding="3">
+                                        <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference advancedCalendarPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                 </Grid.GestureRecognizers>
+                                      <Frame Margin="0" Padding="12,15,12,12" CornerRadius="7">
+                                                              <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="13"></Setter>
+                                    <Setter Property="TextColor" Value="#536d96"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label  Text="{Binding title}" TextColor="#001955" FontSize="15" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"></Label>
+                       
+                                                   <StackLayout Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="0"  >
+                            <Image Source="inboxcorrescalendar.png" HeightRequest="15"></Image>
+                             <!--<Label Text="Date" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>          -->                                                       
+                            <Label Text="{Binding startDate,StringFormat='{0:d MMM , yyyy}'}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+
+                                                              </StackLayout>
+   </Frame>
+                                </Grid>
+                <!--
+                <controls:CorrespondencesItemTemplet Margin="-5">
+                                                                                         <controls:CorrespondencesItemTemplet.GestureRecognizers>
+                     <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference advancedCalendarPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                 </controls:CorrespondencesItemTemplet.GestureRecognizers>
+                </controls:CorrespondencesItemTemplet>
+                    -->                                   <!--
+                <Grid Margin="0,0,0,5">
+                                                                                                               <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Command="{Binding BindingContext.EventSelectedCommand, Source={x:Reference advancedCalendarPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                 </Grid.GestureRecognizers>
+                                      <Frame CornerRadius="10" Margin="0,5,0,2" Padding="10">
+                                                              <Grid ColumnDefinitions="50,auto,*" RowDefinitions="auto,*,auto">
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="13"></Setter>
+                                    <Setter Property="TextColor" Value="#536d96"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+                                <Frame HeightRequest="40" Padding="0" Margin="0" Grid.Row="0" Grid.Column="0" BackgroundColor="#049DD9" WidthRequest="40" CornerRadius="25">
+                              <Image Source="inboxincomingnternal.png" HeightRequest="20"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                          </Frame>
+                        <Label  Text="{Binding title}" TextColor="#001955" FontSize="15" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></Label>
+                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" HorizontalOptions="StartAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="inputusername.png" HeightRequest="15"></Image>
+                                                          <Label Text="from" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>                                                                
+                            <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                            </StackLayout>
+                                                                                          <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
+                            <Image Source="inboxcorrescalendar.png" HeightRequest="15"></Image>
+                              <Label Text="Date" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>                                                                
+                            <Label Text="{Binding date,StringFormat='{0:d MMM , yyyy}'}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>     </Frame>
+                                </Grid>
+-->
+         
+            </DataTemplate>
+        </plugin:Calendar.EventTemplate>
+                             <plugin:Calendar.EmptyTemplate>
+                               <DataTemplate>
+                                   <StackLayout>
+                                       <Label HorizontalOptions="CenterAndExpand" Text="{translator:Translate YouHaveNOTasksForTheseDay}"></Label>
+                                   </StackLayout>
+                               </DataTemplate>
+                             </plugin:Calendar.EmptyTemplate>
+                                 <!--  <plugin:Calendar.Triggers>
+                    <DataTrigger TargetType="plugin:Calendar" Binding="{Binding FlowDirection}" Value="RightToLeft">
+                        <Setter Property="DaysTitleMaximumLength" Value="ThreeChars"></Setter>
+                    </DataTrigger>
+                </plugin:Calendar.Triggers>
+               -->
+    </plugin:Calendar>
+            </Grid>
+    </ContentView.Content>
+</ContentView>

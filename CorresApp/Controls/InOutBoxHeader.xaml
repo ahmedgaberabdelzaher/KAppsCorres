@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CorresApp.Controls"
+    x:Class="CorresApp.Controls.InOutBoxHeader">
+    <ContentView.Content>
+                        <Grid RowDefinitions="auto,auto" ColumnDefinitions="2*,*" >
+                    
+                     <Label Text="{Binding UserName}" Style="{StaticResource UserNameLabelStyle}" Grid.Row="0" Grid.Column="0"></Label>
+                                        <Label Text="{Binding DeptName}"  Style="{StaticResource DeptLabelStyle}" Grid.Row="1" Grid.Column="0"></Label>
+                                                           <controls:LogoutControl HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1"></controls:LogoutControl>
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="1" Grid.Column="1">
+                          <Image Source="search.png" HeightRequest="30"  HorizontalOptions="End" >
+                                                                <Image.Triggers >
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding ShowSearchCommand}"></TapGestureRecognizer>
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                        <Image  Source="notificationsnew.png" HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"></TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                  </StackLayout>                                
+                </Grid>
+
+    </ContentView.Content>
+</ContentView>

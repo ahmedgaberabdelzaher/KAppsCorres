@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:CorresApp.Controls"
+    xmlns:translator="clr-namespace:CorresApp.Helpers"
+    FlowDirection="{Binding FlowDirection}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:tabView="clr-namespace:CorresApp.TabView" xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="CorresApp.View.Inbox" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid RowDefinitions="*,auto">
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                       <Image Source="screensheader.png" HeightRequest="250" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
+            <StackLayout >
+                            <StackLayout.Margin>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="15,35,15,15"/>
+            <On Platform="Android" Value="15"/>
+        </OnPlatform>
+     </StackLayout.Margin>
+          <controls:InOutBoxHeader></controls:InOutBoxHeader>
+                <StackLayout Orientation="Horizontal"  Margin="0,25,0,0">
+                     <StackLayout.Triggers>
+                                          <DataTrigger TargetType="StackLayout" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                        </StackLayout.Triggers>
+             <Label Text="{translator:Translate Inbox}"  FontSize="25" TextColor="White" FontFamily="Montserrat-SemiBold"></Label>
+                <Frame BackgroundColor="{StaticResource greenColor}" Padding="20,5,20,5" IsVisible="false">
+                     <Frame.CornerRadius>
+        <OnPlatform x:TypeArguments="x:Single">
+            <On Platform="iOS" Value="15"/>
+            <On Platform="Android" Value="20"/>
+        </OnPlatform>
+     </Frame.CornerRadius>
+<Label Text="2 new" TextColor="White"></Label>
+</Frame>
+
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsSearchVisible}"  Margin="10" Padding="0">
+                                        <Grid RowDefinitions="50,50,50" ColumnDefinitions="*,*">
+                                     <Frame Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Padding="5" CornerRadius="10" BorderColor="#E4E6EF">
+                              <StackLayout  VerticalOptions="StartAndExpand" Margin="5,0,5,0">
+                                  <Label Text="{translator:Translate From}"   HorizontalTextAlignment="Center" TextColor="#B5B5C3" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></Label>
+                                  <DatePicker Date="{Binding FromDateFilter}" HorizontalOptions="StartAndExpand"  Margin="0,-15,0,0"  TextColor="#214455" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></DatePicker>
+                              </StackLayout>
+                          </Frame>
+                              <Frame Grid.Row="1" Grid.Column="1"  BackgroundColor="White" Padding="5" CornerRadius="10" BorderColor="#E4E6EF">
+                              <StackLayout  VerticalOptions="StartAndExpand" Margin="5,0,5,0">
+                                  <Label Text="{translator:Translate To}"  HorizontalTextAlignment="Center" TextColor="#B5B5C3" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></Label>
+                                  <DatePicker Date="{Binding ToDateFilter}" HorizontalOptions="StartAndExpand" Margin="0,-15,0,0" TextColor="#214455" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></DatePicker>
+                              </StackLayout>
+                          </Frame>
+                              <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,0,0,-15" CornerRadius="10" BorderColor="#E4E6EF">
+                             <Entry HorizontalOptions="FillAndExpand"   Placeholder="{translator:Translate SearchValue}" PlaceholderColor="Black" Text="{Binding SearchText}"></Entry>
+</Frame>
+                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" Padding="0" >
+                 <!--  <SearchBar x:Name="searchBar" Placeholder="Search Value..." BackgroundColor="White" 
+           CancelButtonColor="Orange"
+           PlaceholderColor="Black" Margin="0,40,0,40"
+           TextColor="Black"
+           TextTransform="Lowercase" HorizontalOptions="FillAndExpand" SearchCommand="{Binding SerachCommand}"   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+           HorizontalTextAlignment="Center"
+           FontSize="Medium"
+           />-->
+                    <Button Text="{translator:Translate ApplySearch}" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Command="{Binding SerachCommand}" CommandParameter="{Binding SearchText}"></Button>
+                    <Label  Text="&#xf00d;" FontSize="Title" FontAttributes="Bold" FontFamily="FontAwesome"
+            TextColor="Red" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetAllDataCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </StackLayout>
+  </Grid>
+                </StackLayout>
+                                    <ScrollView Orientation="Horizontal" Margin="-10,40,-10,5" HorizontalScrollBarVisibility="Never" >
+                                        <ScrollView.Triggers>
+                                          <DataTrigger TargetType="ScrollView" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                        </ScrollView.Triggers>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.Resources>
+                                <ResourceDictionary>
+                                    <Style TargetType="Frame">
+                                                                                <Setter Property="HeightRequest" Value="150"></Setter>
+
+                                        <Setter Property="WidthRequest" Value="100"></Setter>
+                                    <Setter Property="Padding" Value="9"></Setter>
+                                        <Setter Property="Margin" Value="0,10,5,5"></Setter>
+                                        <Setter Property="CornerRadius" Value="20"></Setter>
+                                    </Style>
+                                                   <Style TargetType="Image">
+                                        <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                                    <Setter Property="WidthRequest" Value="50"></Setter>
+                                                       <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                                    <Setter Property="HeightRequest" Value="35"></Setter>               
+                                    <Setter Property="Margin" Value="0"></Setter>               
+
+                                    </Style>
+                                   <Style TargetType="Label">
+                                       <Setter Property="FontSize" Value="14" ></Setter>
+                                                                              <Setter Property="FontAttributes" Value="Bold" ></Setter>
+
+                                   </Style>
+                                        <Style TargetType="StackLayout">
+
+                                   </Style>
+                                </ResourceDictionary>
+                            </StackLayout.Resources>
+                    <Frame   BackgroundColor="#049DD9">
+                        <StackLayout>
+                       <Image Source="inboxincomingnternal.png"></Image>
+                         <Label Text="{translator:Translate IncomingInternal}" HorizontalOptions="Center" Margin="0" TextColor="White"></Label>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewIncomInternalCommand}" CommandParameter="1">
+                                
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                                                <Frame  BackgroundColor="#536d96">
+                           <StackLayout>
+
+                        <Image Source="inboxoutgoingexternal.png" ></Image>
+                         <Label Text="{translator:Translate OutgoingExternal}"  TextColor="White"></Label>
+                                       <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewIncomInternalCommand}" CommandParameter="2">
+                                
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                                            
+                    </Frame>
+                                   <Frame  BackgroundColor="#0DA68A">
+                                       <StackLayout>
+                                       <Image Source="inboxincomingexternal.png"  ></Image>
+                         <Label Text="{translator:Translate IncomingExternal}" HorizontalOptions="Center" Margin="0" TextColor="White"></Label>
+                                       </StackLayout>
+                                 <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewIncomInternalCommand}" CommandParameter="3">
+                                
+                            </TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+                            <!--
+                    <Frame  BackgroundColor="#F25C5C">
+                           <StackLayout>
+                           <Image Source="inboxdelayed.png"></Image>
+                         <Label Text="{translator:Translate Delayed}" TextColor="White"></Label>
+                        </StackLayout>
+                    </Frame>-->
+                        </StackLayout>
+                    </ScrollView>
+                             <pancakeView:PancakeView CornerRadius="20,20,0,0" Margin="-10,-8,-10,-50" Padding="0,10,0,0" BackgroundColor="White">
+
+                <RefreshView Command="{Binding GetAllDataCommand}" IsRefreshing="{Binding IsRefreshing}">
+
+                    <CollectionView ItemsSource="{Binding InBoxDataLst}" SelectionMode="Single" SelectionChangedCommand="{Binding NavigateToDetailCommand}" SelectedItem="{Binding SelectedItem}" ItemSizingStrategy="MeasureAllItems">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <controls:CorrespondencesItemTemplet></controls:CorrespondencesItemTemplet>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <Grid>
+                                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{translator:Translate NoInbox}"></Label>
+                            </Grid>
+                        </CollectionView.EmptyView>
+                </CollectionView>
+                                    </RefreshView>
+ 
+                    </pancakeView:PancakeView>
+            </StackLayout>
+</Grid>
+               <pancakeView:PancakeView Grid.Row="1" BackgroundColor="White" Margin="0,10,0,0" CornerRadius="30,30,0,0" VerticalOptions="EndAndExpand" Padding="10">
+                     <Grid RowDefinitions="*" ColumnDefinitions="*,*,1.25*,*">
+                        <tabView:UnSelectedTabView Image="bottomnavhome.png" Command="{Binding NavigateToHomeCommand}"  TitleText="{translator:Translate Home}" Grid.Row="0" Grid.Column="0"></tabView:UnSelectedTabView>
+                         <tabView:SelectedTabView Grid.Row="0" Image="bottomnavinboxactive.png" Command="{Binding NavigateToInboxCommand}" TitleText="{translator:Translate Inbox}" Grid.Column="1"></tabView:SelectedTabView>
+                         <tabView:UnSelectedTabView Grid.Row="0" Image="bottomnavoutbox.png" TitleText="{translator:Translate Outbox}" Command="{Binding NavigateToOutboxCommand}" Grid.Column="2"></tabView:UnSelectedTabView>
+                         <tabView:UnSelectedTabView Grid.Row="0" Image="bottomnavcalendar.png" TitleText="{translator:Translate Calender}" Command="{Binding NavigateToCalenderCommand}" Grid.Column="3"></tabView:UnSelectedTabView>
+                     </Grid>
+                </pancakeView:PancakeView>
+                </Grid>
+            <controls:Loader IsVisible="{Binding IsLoading}"></controls:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

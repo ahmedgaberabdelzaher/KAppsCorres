@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:CorresApp.Controls"
+    x:Class="CorresApp.View.IntroPAge" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+        <Grid >
+            <Image Source="splash.png" Aspect="AspectFill"></Image>
+                                     <Button Text="Go to Login Page" BackgroundColor="Transparent" Command="{Binding NavigateToLoginCommand}" Margin="10,40,10,90" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+
+        <StackLayout HorizontalOptions="CenterAndExpand" Padding="0,170,0,0" IsVisible="false" >
+            <Image HeightRequest="180"  Source="logo.png"></Image>
+            <Label Text="Correspondencess" Margin="10" HorizontalOptions="CenterAndExpand" TextColor="White" FontAttributes="Bold" FontSize="24"></Label>
+            <Frame CornerRadius="20" HorizontalOptions="CenterAndExpand"  HeightRequest="30" WidthRequest="250" Padding="0" BackgroundColor="{StaticResource greenColor}">
+                <Label Text="Management System" FontSize="17" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+            </Frame>
+                         <Button Text="Go to Login Page" BackgroundColor="Transparent" Command="{Binding NavigateToLoginCommand}"  VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>
+            <Label Text="Get more done, when ever you are" IsVisible="false" TextColor="White" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Margin="0,10,0,30"></Label>
+            </Grid>
+            <controls:Loader IsVisible="{Binding IsLoading}"></controls:Loader>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

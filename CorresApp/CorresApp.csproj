@@ -1,0 +1,99 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.4.5304" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Controls.SignaturePad.Forms" Version="3.0.0" />
+    <PackageReference Include="Xamarin.Forms.SaveOpenPDFPackage" Version="1.0.0" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.36.2" />
+    <PackageReference Include="Polly" Version="7.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="View\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interface\" />
+    <Folder Include="Services\Classes\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="TabView\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Fonts\Montserrat-Black.ttf" />
+    <None Remove="Fonts\Montserrat-BlackItalic.ttf" />
+    <None Remove="Fonts\Montserrat-Bold.ttf" />
+    <None Remove="Fonts\Montserrat-BoldItalic.ttf" />
+    <None Remove="Fonts\Montserrat-ExtraBold.ttf" />
+    <None Remove="Fonts\Montserrat-ExtraBoldItalic.ttf" />
+    <None Remove="Fonts\Montserrat-ExtraLight.ttf" />
+    <None Remove="Fonts\Montserrat-ExtraLightItalic.ttf" />
+    <None Remove="Fonts\Montserrat-Italic.ttf" />
+    <None Remove="Fonts\Montserrat-Light.ttf" />
+    <None Remove="Fonts\Montserrat-LightItalic.ttf" />
+    <None Remove="Fonts\Montserrat-Medium.ttf" />
+    <None Remove="Fonts\Montserrat-MediumItalic.ttf" />
+    <None Remove="Fonts\Montserrat-Regular.ttf" />
+    <None Remove="Fonts\Montserrat-SemiBold.ttf" />
+    <None Remove="Fonts\Montserrat-SemiBoldItalic.ttf" />
+    <None Remove="Fonts\Montserrat-Thin.ttf" />
+    <None Remove="Fonts\Montserrat-ThinItalic.ttf" />
+    <None Remove="Fonts\fa-solid-900.ttf" />
+    <None Remove="Polly" />
+    <None Remove="Behaviors\" />
+    <None Remove="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Montserrat-Black.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-BlackItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Bold.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-BoldItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-ExtraBold.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-ExtraBoldItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-ExtraLight.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-ExtraLightItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Italic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Light.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-LightItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Medium.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-MediumItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Regular.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-SemiBold.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-Thin.ttf" />
+    <EmbeddedResource Include="Fonts\Montserrat-ThinItalic.ttf" />
+    <EmbeddedResource Include="Fonts\fa-solid-900.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\LangaugeResource.ar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangaugeResource.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\LangaugeResource.ar.Designer.cs">
+      <DependentUpon>LangaugeResource.ar.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

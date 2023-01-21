@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:translator="clr-namespace:CorresApp.Helpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CorresApp.Controls.CalendarFooter">
+    <ContentView.Content>
+          <Grid
+        HeightRequest="42"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label
+            FontAttributes="Bold" 
+            FontSize="Medium"
+            Text="{translator:Translate TodaysList}"
+            TextColor="Black"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+
+        <Label
+            x:Name="showHideLabel"
+            Grid.Column="1"
+            Margin="0,0,15,0"
+            BackgroundColor="Transparent"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="End"
+            FontFamily="FontAwesome"
+            IsVisible="{Binding FooterArrowVisible}"
+            Text="&#xf062;"
+            TextColor="DarkCyan"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center">
+            <Label.Triggers>
+                <DataTrigger
+                    Binding="{Binding CalendarSectionShown}"
+                    TargetType="Label"
+                    Value="False">
+                    <Setter Property="Text" Value="&#xf063;" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ShowHideCalendarCommand}" />
+        </Grid.GestureRecognizers>
+    </Grid>
+    </ContentView.Content>
+</ContentView>

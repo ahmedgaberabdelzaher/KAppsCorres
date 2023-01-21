@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CorresApp.View.Login" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                            <Image HeightRequest="180" HorizontalOptions="CenterAndExpand" Margin="0,100,0,0" Source="logo.png"></Image>
+                <Label Text="Welcome Back!" FontFamily="AraJozoor-Regular" Margin="20,0,0,0"  FontSize="25" TextColor="Black"></Label>
+                <Label Text="Sign in to continue..." Margin="20,0,0,0" FontSize="13"></Label>
+                <Frame CornerRadius="10" BackgroundColor="White" Margin="20">
+                    <StackLayout>
+                        <Grid ColumnDefinitions="20,*,20" RowDefinitions="*,*">
+                              <Image Source="inputusername.png" Grid.Row="0" Grid.Column="0"></Image>
+                             <Entry Placeholder="Username or email" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Visual="Material"></Entry>
+                           <Image Source="inputpassword.png" Grid.Row="1" Grid.Column="0"></Image>
+                    <Entry Placeholder="Password" Grid.Row="1" IsPassword="True" Grid.Column="1">
+                        <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding IsShowPassword}" Value="True">
+                                <Setter Property="IsPassword" Value="False"/>
+                            </DataTrigger>
+                        </Entry.Triggers>
+                      
+                    </Entry>
+                    <ImageButton BackgroundColor="Transparent" Command="{Binding SHowHidePAsswordCommand}" Source="showpassword.png" Grid.Row="1" Grid.Column="2"></ImageButton>
+                            <!--
+
+                                   <StackLayout  Grid.Row="0" Grid.Column="0">
+                         <Image Source="bottomnavhomeactive.png" HeightRequest="40"></Image>
+                         <Label Text="Home" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                           </StackLayout>
+                                              <StackLayout  Grid.Row="0" Grid.Column="1">
+                         <Image Source="bottomnavinbox.png" HeightRequest="40"></Image>
+                         <Label Text="Inbox" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource placHolderColor}" ></Label>
+                           </StackLayout>
+                                                  <StackLayout  Grid.Row="0" Grid.Column="2">
+                         <Image Source="bottomnavoutbox.png" HeightRequest="40"></Image>
+                         <Label Text="Outbox" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource placHolderColor}"></Label>
+                           </StackLayout>
+                                                  <StackLayout  Grid.Row="0" Grid.Column="3">
+                         <Image Source="bottomnavcalendar.png" HeightRequest="40"></Image>
+                         <Label Text="Calender" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource placHolderColor}"></Label>
+                           </StackLayout>
+-->
+                        </Grid>
+                
+                        </StackLayout>
+                </Frame>
+                <Button Text="Log In" Command="{Binding NavigateToHomeCommand}" CornerRadius="15" Margin="20"></Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	  <data name="IncomingExternal" xml:space="preserve">
+    <value>External In</value>
+  </data>
+  <data name="OutgoingExternal" xml:space="preserve">
+    <value>External Out</value>
+  </data>
+    <data name="Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+  <data name="IncomingInternal" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  	  <data name="DashBoard" xml:space="preserve">
+    <value>DashBoard</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+    <data name="Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="Outbox" xml:space="preserve">
+    <value>Outbox</value>
+  </data>
+  <data name="Calender" xml:space="preserve">
+    <value>Deadlines</value>
+  </data>
+   <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+     <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+
+
+    <data name="CorrespondenceDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="WorkFlow" xml:space="preserve">
+    <value>Workflow</value>
+  </data>
+  	  <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+    <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="DestinationEntities" xml:space="preserve">
+    <value>Destination Entities</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+   <data name="Instructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+     <data name="Deadline" xml:space="preserve">
+    <value>Deadlines</value>
+  </data>
+    <data name="EmployeeInCC" xml:space="preserve">
+    <value>Employee in cc</value>
+  </data>
+  	  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+    <data name="Attatchements" xml:space="preserve">
+    <value>Attatchements</value>
+  </data>
+  <data name="RelatedCorrespondences" xml:space="preserve">
+    <value>Related Correspondences</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+   <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+     <data name="Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+    <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+   <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+     <data name="Signature" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+       <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+         <data name="TodaysList" xml:space="preserve">
+    <value>Todays List</value>
+  </data>
+  <data name="YouHaveNOTasksForTheseDay" xml:space="preserve">
+    <value>No deadlines for the selected date</value>
+  </data>
+    <data name="DashBoard" xml:space="preserve">
+    <value>DashBoard</value>
+  </data>
+    <data name="ServerError" xml:space="preserve">
+    <value>Server Error</value>
+  </data>
+  <data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
+    <value>Poor internet connection or server is not responding</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>Session Expired</value>
+  </data>
+    <data name="NoInternet" xml:space="preserve">
+    <value>please check your internet connection</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>LogOut</value>
+  </data>
+  <data name="UseMyName" xml:space="preserve">
+    <value>Use My Name</value>
+  </data>
+  <data name="MeetingDetails" xml:space="preserve">
+    <value>Meeting Details</value>
+  </data>
+  <data name="BasicInformation" xml:space="preserve">
+    <value>Meeting Information</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Comitee" xml:space="preserve">
+    <value>Comitee</value>
+  </data>
+  <data name="MeetingPlace" xml:space="preserve">
+    <value>Meeting Place</value>
+  </data>
+  <data name="MeetingDate" xml:space="preserve">
+    <value>Meeting Date</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="OnlineMeeting" xml:space="preserve">
+    <value>Online Meeting</value>
+  </data>
+  <data name="Attandees" xml:space="preserve">
+    <value>Attandees</value>
+  </data>
+  <data name="FollowingMOMReview" xml:space="preserve">
+    <value>Following MOM Review</value>
+  </data>
+  <data name="SendSignature" xml:space="preserve">
+    <value>Send Signature</value>
+  </data>
+  <data name="SendToPresident" xml:space="preserve">
+    <value>Send To President</value>
+  </data>
+  <data name="NoNotificationsFound" xml:space="preserve">
+    <value>No Notifications Found</value>
+  </data>
+    <data name="NoInbox" xml:space="preserve">
+    <value>No Inbox Found</value>
+  </data>
+      <data name="NoOutbox" xml:space="preserve">
+    <value>No Outbox Found</value>
+  </data>
+  <data name="SendFeedBack" xml:space="preserve">
+    <value>Send FeedBack</value>
+  </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>No Items Found</value>
+  </data>
+    <data name="ActionCompledMsg" xml:space="preserve">
+    <value>The operation has been completed successfully</value>
+  </data>
+    <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+      <data name="ApplySearch" xml:space="preserve">
+    <value>Apply Search</value>
+  </data>
+          <data name="SearchValue" xml:space="preserve">
+    <value>KeyWords</value>
+  </data>
+</root>

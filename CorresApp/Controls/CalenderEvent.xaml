@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CorresApp.Controls.CalenderEvent">
+    <ContentView.Content>
+        <Frame BackgroundColor="White" CornerRadius="10" Margin="10" >
+            <StackLayout
+        Padding="15,0,0,0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Label FontAttributes="Bold" FontSize="Medium">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding date, StringFormat='{0:MM/dd HH\\:mm}'}" TextColor="Black" />
+                    <Span Text=" - " />
+                    <Span Text="{Binding Name}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label
+            FontSize="Small"
+            LineBreakMode="WordWrap"
+            Text="{Binding Description}" />
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+        </StackLayout.GestureRecognizers>
+    </StackLayout>
+            </Frame>
+    </ContentView.Content>
+</ContentView>

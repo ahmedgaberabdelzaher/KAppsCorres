@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns:controls="clr-namespace:CorresApp.Controls"
+    xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+        FlowDirection="{Binding FlowDirection}"
+                 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:tabView="clr-namespace:CorresApp.TabView"
+    x:Class="CorresApp.View.CalenderPage" NavigationPage.HasNavigationBar="False"  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        xmlns:translator="clr-namespace:CorresApp.Helpers"
+    ios:Page.UseSafeArea="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+                 <Style x:Key="daysLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="Margin" Value="5,2" />
+            </Style>
+            <Style x:Key="daysTitleLabelStyle" TargetType="Label">
+                
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowDefinitions="*,auto">
+            <Grid Grid.Row="0">
+           <Image Source="screensheader.png" Aspect="AspectFill" HeightRequest="200" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+        
+           </Image>
+            <StackLayout>
+                              <StackLayout.Margin>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="15,35,15,15"/>
+            <On Platform="Android" Value="15"/>
+        </OnPlatform>
+     </StackLayout.Margin>
+                 <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*" >
+                    
+                     <Label Text="{Binding UserName}" Style="{StaticResource UserNameLabelStyle}" Grid.Row="0" Grid.Column="0"></Label>
+                                        <Label Text="{Binding DeptName}"  Style="{StaticResource DeptLabelStyle}" Grid.Row="1" Grid.Column="0"></Label>
+                                                           <controls:LogoutControl HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1"></controls:LogoutControl>
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="1" Grid.Column="1">
+                       <StackLayout.Triggers >
+                                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                                                </StackLayout.Triggers>
+                          <Image Source="search.png" HeightRequest="30"  HorizontalOptions="End" >
+                                                                <Image.Triggers >
+                                                                    <DataTrigger TargetType="Image" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding ShowSearchCommand}"></TapGestureRecognizer>
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                        <Image  Source="notificationsnew.png" HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"></TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                  </StackLayout>                                
+                </Grid>
+
+                <!--
+                <StackLayout Orientation="Horizontal" >
+                 
+                                                             <Label Text="{Binding UserName}" TextColor="White" FontSize="22"  FontAttributes="Bold" FontFamily="Montserrat-SemiBold.ttf" HorizontalOptions="StartAndExpand"></Label>
+                    <Image Source="search.png" IsVisible="false"  HeightRequest="30" HorizontalOptions="End" ></Image>
+                    <ImageButton Source="notificationsnew.png"  HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" Command="{Binding GoToNotificationCommand}">
+                    </ImageButton>
+                </StackLayout>
+                      -->       <Label Text="{translator:Translate Deadline}" HorizontalOptions="Start" FontAttributes="Bold" FontSize="20" Margin="0,40,5,0" TextColor="White" FontFamily="AraJozoor-Regular">
+                                                 <Label.Triggers >
+                                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSearchVisible}" Value="True">
+                                                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                                                    </DataTrigger>
+                                                                </Label.Triggers>
+                      </Label>
+                     <!--  <controls:OriginalLazyViewImpl AccentColor="{StaticResource greenColor}" VerticalOptions="FillAndExpand"  x:Name="lazyView" Margin="-20" x:TypeArguments="controls:Calender" HorizontalOptions="FillAndExpand" UseActivityIndicator="True"/>
+-->
+                                <StackLayout IsVisible="{Binding IsSearchVisible}"  Margin="10,-20,0,0" Padding="0">
+                                        <Grid RowDefinitions="50,50,50" ColumnDefinitions="*,*">
+                                     <Frame Grid.Row="1" Grid.Column="0"  BackgroundColor="White" Padding="5" CornerRadius="10" BorderColor="#E4E6EF">
+                              <StackLayout  VerticalOptions="StartAndExpand" Margin="5,0,5,0">
+                                  <Label Text="{translator:Translate From}"   HorizontalTextAlignment="Center" TextColor="#B5B5C3" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></Label>
+                                  <DatePicker Date="{Binding FromDateFilter}" HorizontalOptions="StartAndExpand"  Margin="0,-15,0,0"  TextColor="#214455" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></DatePicker>
+                              </StackLayout>
+                          </Frame>
+                              <Frame Grid.Row="1" Grid.Column="1"  BackgroundColor="White" Padding="5" CornerRadius="10" BorderColor="#E4E6EF">
+                              <StackLayout  VerticalOptions="StartAndExpand" Margin="5,0,5,0">
+                                  <Label Text="{translator:Translate To}"  HorizontalTextAlignment="Center" TextColor="#B5B5C3" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></Label>
+                                  <DatePicker Date="{Binding ToDateFilter}" HorizontalOptions="StartAndExpand" Margin="0,-15,0,0" TextColor="#214455" FontSize="15" FontFamily="Poppins-SemiBold.ttf"></DatePicker>
+                              </StackLayout>
+                          </Frame>
+                              <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,0,0,-15" CornerRadius="10" BorderColor="#E4E6EF">
+                             <Entry HorizontalOptions="FillAndExpand"   Placeholder="{translator:Translate SearchValue}" PlaceholderColor="Black" Text="{Binding SearchText}"></Entry>
+</Frame>
+                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-15,0,0" Padding="0" >
+                 <!--  <SearchBar x:Name="searchBar" Placeholder="Search Value..." BackgroundColor="White" 
+           CancelButtonColor="Orange"
+           PlaceholderColor="Black" Margin="0,40,0,40"
+           TextColor="Black"
+           TextTransform="Lowercase" HorizontalOptions="FillAndExpand" SearchCommand="{Binding SerachCommand}"   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+           HorizontalTextAlignment="Center"
+           FontSize="Medium"
+           />-->
+                    <Button Text="{translator:Translate ApplySearch}" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Command="{Binding SearchCommand}" CommandParameter="{Binding SearchText}"></Button>
+                    <Label  Text="&#xf00d;" FontSize="Title" FontAttributes="Bold" FontFamily="FontAwesome"
+            TextColor="Red" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetAllDataCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </StackLayout>
+  </Grid>
+                </StackLayout>
+
+                                             <pancakeView:PancakeView CornerRadius="20,20,0,0" Margin="-10,55,-10,-50" Padding="10" BackgroundColor="White">
+                                                 <pancakeView:PancakeView.Triggers>
+                                                     <DataTrigger TargetType="pancakeView:PancakeView" Binding="{Binding IsSearchVisible}" Value="true">
+                                                         <Setter Property="Margin" Value="-10,5,-10,-50"></Setter>
+                                                     </DataTrigger>
+                                                 </pancakeView:PancakeView.Triggers>
+                                                 <CollectionView SelectionMode="Single" ItemsSource="{Binding DeadLines}" SelectedItem="{Binding SelectedItem}" SelectionChangedCommand="{Binding NavigateToDetailCommand}">
+                    <CollectionView.ItemTemplate
+                        >
+                        <DataTemplate>
+                             <Grid Margin="5,5,10,5" Padding="3">
+                                      
+                                      <Frame Margin="0" Padding="12,15,12,12" CornerRadius="7">
+                                                              <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="13"></Setter>
+                                    <Setter Property="TextColor" Value="#536d96"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label  Text="{Binding title}" TextColor="#001955" FontSize="15" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"></Label>
+                       
+                                                   <StackLayout Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="0"  >
+                            <Image Source="inboxcorrescalendar.png" HeightRequest="15"></Image>
+                             <!--<Label Text="Date" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>          -->                                                       
+                            <Label Text="{Binding startDate,StringFormat='{0:d MMM , yyyy}'}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+
+                                                              </StackLayout>
+   </Frame>
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                       
+                                   <StackLayout>
+                                       <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{translator:Translate YouHaveNOTasksForTheseDay}"></Label>
+                                   </StackLayout>
+
+                    </CollectionView.EmptyView>
+                </CollectionView>
+</pancakeView:PancakeView>
+            </StackLayout>
+                </Grid>
+               <pancakeView:PancakeView BackgroundColor="White" Grid.Row="1" CornerRadius="30,30,0,0" VerticalOptions="EndAndExpand" Padding="10">
+                     <Grid RowDefinitions="*" ColumnDefinitions="*,*,1.25*,*">
+                        <tabView:UnSelectedTabView Image="bottomnavhome.png" Command="{Binding NavigateToHomeCommand}"  TitleText="{translator:Translate  Home}" Grid.Row="0" Grid.Column="0"></tabView:UnSelectedTabView>
+                         <tabView:UnSelectedTabView Grid.Row="0" Image="bottomnavinbox.png" Command="{Binding NavigateToInboxCommand}" TitleText="{translator:Translate Inbox}" Grid.Column="1"></tabView:UnSelectedTabView>
+                         <tabView:UnSelectedTabView Grid.Row="0" Image="bottomnavoutbox.png" TitleText="{translator:Translate Outbox}" HorizontalOptions="CenterAndExpand" Command="{Binding NavigateToOutboxCommand}" Grid.Column="2"></tabView:UnSelectedTabView>
+                         <tabView:SelectedTabView Grid.Row="0" Image="bottomnavcalendaractive.png" TitleText="{translator:Translate Calender}"  Grid.Column="3"></tabView:SelectedTabView>
+                     </Grid>
+                </pancakeView:PancakeView>
+        </Grid>
+       
+    </ContentPage.Content>
+</ContentPage>

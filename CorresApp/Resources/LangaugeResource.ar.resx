@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	
+	  <data name="IncomingExternal" xml:space="preserve">
+    <value>الوارد الخارجي</value>
+  </data>
+    <data name="OutgoingExternal" xml:space="preserve">
+    <value>الصادر الخارجي</value>
+  </data>
+  <data name="Delayed" xml:space="preserve">
+    <value>التأخير</value>
+  </data>
+    <data name="IncomingInternal" xml:space="preserve">
+    <value>الوارد الداخلي</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+
+    	  <data name="DashBoard" xml:space="preserve">
+    <value>DashBoard</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسة</value>
+  </data>
+    <data name="Inbox" xml:space="preserve">
+    <value>صندوق الوارد</value>
+  </data>
+  <data name="Outbox" xml:space="preserve">
+    <value>صندوق الصادر</value>
+  </data>
+  <data name="Calender" xml:space="preserve">
+    <value>التقويم</value>
+  </data>
+   <data name="From" xml:space="preserve">
+    <value>من</value>
+  </data>
+     <data name="To" xml:space="preserve">
+    <value>الي</value>
+  </data>
+
+    <data name="CorrespondenceDetails" xml:space="preserve">
+    <value>تفاصيل المراسلة</value>
+  </data>
+  <data name="WorkFlow" xml:space="preserve">
+    <value>سير العمليات</value>
+  </data>
+  	  <data name="InProgress" xml:space="preserve">
+    <value>جاري العمل</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>تم الإنتهاء</value>
+  </data>
+    <data name="Pending" xml:space="preserve">
+    <value>قيد الانتظار</value>
+  </data>
+  <data name="DestinationEntities" xml:space="preserve">
+    <value>الجهات المرسل إليها</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>الجهه</value>
+  </data>
+   <data name="Instructions" xml:space="preserve">
+    <value>التعليمات</value>
+  </data>
+     <data name="Deadline" xml:space="preserve">
+    <value>مراسلات مطلوب الرد عليها</value>
+  </data>
+    <data name="EmployeeInCC" xml:space="preserve">
+    <value>موظفين في ال cc</value>
+  </data>
+  	  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>وحدة</value>
+  </data>
+    <data name="Attatchements" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="RelatedCorrespondences" xml:space="preserve">
+    <value>المراسلات ذات الصلة</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+   <data name="Approve" xml:space="preserve">
+    <value>إعتماد</value>
+  </data>
+     <data name="Return" xml:space="preserve">
+    <value>إرجاع</value>
+  </data>
+    <data name="Reason" xml:space="preserve">
+    <value>السبب</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+   <data name="Cancel" xml:space="preserve">
+    <value>الغاء</value>
+  </data>
+     <data name="Signature" xml:space="preserve">
+    <value>التوقيع</value>
+  </data>
+       <data name="Note" xml:space="preserve">
+    <value>الملاحظات</value>
+  </data>
+          <data name="TodaysList" xml:space="preserve">
+    <value>قائمه اليوم</value>
+  </data>
+    <data name="YouHaveNOTasksForTheseDay" xml:space="preserve">
+    <value>ليس لديك مهمات لهذا اليوم</value>
+  </data>
+      <data name="DashBoard" xml:space="preserve">
+    <value>الصفحه الرئيسيه</value>
+  </data>
+    <data name="ServerError" xml:space="preserve">
+    <value>خطأ في السيرفر</value>
+  </data>
+  <data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
+    <value>خطأ في السيرفر او  لا يوجد انترنت</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>انتهت </value>
+  </data>
+    <data name="NoInternet" xml:space="preserve">
+    <value>لا يوجد انترنت</value>
+  </data>
+    <data name="LogOut" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+    <data name="UseMyName" xml:space="preserve">
+    <value>استخدم الاسم</value>
+  </data>
+    <data name="MeetingDetails" xml:space="preserve">
+    <value>تفاصيل الاجتماع</value>
+  </data>
+    <data name="BasicInformation" xml:space="preserve">
+    <value>البيانات الأساسية</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Comitee" xml:space="preserve">
+    <value>اللجنة</value>
+  </data>
+  <data name="MeetingPlace" xml:space="preserve">
+    <value>مكان الاجتماع</value>
+  </data>
+  <data name="MeetingDate" xml:space="preserve">
+    <value>تاريخ الاجتماع</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>من الساعة</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>إلى الساعة</value>
+  </data>
+  <data name="OnlineMeeting" xml:space="preserve">
+    <value>اجتماع الكتروني</value>
+  </data>
+  <data name="Attandees" xml:space="preserve">
+    <value>الحضور</value>
+  </data>
+  <data name="FollowingMOMReview" xml:space="preserve">
+    <value>متابعة رسائل المراجعة</value>
+  </data>
+  <data name="SendSignature" xml:space="preserve">
+    <value>ارسال التوقيع</value>
+  </data>
+  <data name="SendToPresident" xml:space="preserve">
+    <value>ارسال الي الرئيس</value>
+  </data>
+    <data name="NoNotificationsFound" xml:space="preserve">
+    <value>لا يوجد لديك اشعارات</value>
+  </data>
+      <data name="NoInbox" xml:space="preserve">
+    <value>لا توجد مراسلات وارده</value>
+  </data>
+      <data name="NoOutbox" xml:space="preserve">
+    <value> توجد مراسلات صادره</value>
+  </data>
+    <data name="SendFeedBack" xml:space="preserve">
+    <value>إرسال رأيك</value>
+  </data>
+    <data name="NoItemsFound" xml:space="preserve">
+    <value>لا توجد عناصر</value>
+  </data>
+      <data name="ActionCompledMsg" xml:space="preserve">
+    <value>تمت العمليه بنجاح</value>
+  </data>
+      <data name="Completed" xml:space="preserve">
+    <value>مكتمله</value>
+  </data>
+        <data name="ApplySearch" xml:space="preserve">
+    <value>تطبيق البحث</value>
+  </data>
+            <data name="SearchValue" xml:space="preserve">
+    <value> الكلمه المفتاحيه</value>
+  </data>
+</root>

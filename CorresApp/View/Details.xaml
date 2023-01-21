@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:controls="clr-namespace:CorresApp.Controls"
+        FlowDirection="{Binding FlowDirection}"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:singnature="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:behav="clr-namespace:CorresApp.Behaviors"
+    xmlns:converter="clr-namespace:CorresApp.Converters"
+        xmlns:translator="clr-namespace:CorresApp.Helpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Name="detailsPage"
+    x:Class="CorresApp.View.Details" BackgroundColor="{StaticResource BackgroundColor}">
+       <ContentPage.Resources>
+         <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                         <converter:IntToBoolConverter x:Key="IntToBoolConverter"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+        <Grid x:Name="mainGrid">
+            <Grid.Triggers>
+                <DataTrigger TargetType="Grid" Binding="{Binding IsShowSignature}" Value="True">
+                    <Setter Property="BackgroundColor" Value="Black"></Setter>
+                                        <Setter Property="Opacity" Value="0.5"></Setter>
+
+                </DataTrigger>
+                <DataTrigger TargetType="Grid" Binding="{Binding IsShowReason}" Value="True">
+                    <Setter Property="BackgroundColor" Value="Black"></Setter>
+                                        <Setter Property="Opacity" Value="0.5"></Setter>
+
+                </DataTrigger>
+            </Grid.Triggers>
+                       <Image Source="screensheader.png" HeightRequest="200" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
+            <StackLayout >
+                            <StackLayout.Margin>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="15,35,15,15"/>
+            <On Platform="Android" Value="15"/>
+        </OnPlatform>
+     </StackLayout.Margin>
+                  <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,auto">
+                <controls:LogoutControl HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1"></controls:LogoutControl>
+                     <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+                    <Label FontFamily="FontAwesome" Text="&#xf053;" FontSize="Title" Margin="0,-30,10,0" VerticalOptions="CenterAndExpand" TextColor="White" HorizontalOptions="Start">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding FlowDirection}" Value="RightToLeft">
+                                <Setter Property="Text" Value="&#xf054;"></Setter>
+                            </DataTrigger>
+                        </Label.Triggers>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                                         <Label Text="{Binding UserName}" TextColor="White" FontSize="22"  FontAttributes="Bold" FontFamily="Montserrat-SemiBold.ttf" HorizontalOptions="StartAndExpand"></Label>
+                  <!--  <Image Source="useravatar.png" HeightRequest="50" HorizontalOptions="StartAndExpand" ></Image>
+                       -->                                     <ImageButton BackgroundColor="Transparent" IsVisible="false"  Source="search.png" HeightRequest="30" HorizontalOptions="End" ></ImageButton>
+
+
+                </StackLayout>
+                                                            <ImageButton Source="notificationsnew.png" Grid.Column="1" Grid.Row="1" HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" ></ImageButton>
+
+                    </Grid>
+                <Label Text="{Binding DeptName}" Margin="0,-30,0,0" Style="{StaticResource DeptLabelStyle}"></Label>
+
+             <Label Text="{translator:Translate CorrespondenceDetails}" Margin="0,40,0,0"  FontSize="25" TextColor="White" FontFamily="Montserrat-SemiBold"></Label>
+                                          <StackLayout Orientation="Horizontal" Margin="0,40,0,0" >
+                                                                            <Frame BackgroundColor="#08b4fc" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" Padding="15,1,15,1">
+                                                                                   <Frame.Triggers>
+                                                                                        <DataTrigger TargetType="Frame" Binding="{Binding DetailsLst.taskStatus}" Value="1">
+                                                                                             <Setter Property="BackgroundColor" Value="Orange"></Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Frame.Triggers>
+                                                                                <Frame.CornerRadius>
+        <OnPlatform x:TypeArguments="x:Single">
+            <On Platform="iOS" Value="10"/>
+            <On Platform="Android" Value="20"/>
+        </OnPlatform>
+     </Frame.CornerRadius>
+                                                                                <Label Text="{translator:Translate InProgress}" VerticalOptions="CenterAndExpand" TextColor="White">
+                                                                                    <Label.Triggers>
+                                                                                        <DataTrigger TargetType="Label" Binding="{Binding DetailsLst.taskStatus}" Value="1">
+                                                                                             <Setter Property="Text" Value="{translator:Translate Completed}"></Setter>
+                                                                                            <Setter Property="TextColor" Value="White"></Setter>
+                                                                                        </DataTrigger>
+                                                                                    </Label.Triggers>
+                                                                                </Label>
+                                                                                </Frame>
+                              <ImageButton BackgroundColor="Transparent" Command="{Binding OpenFileCommand}" CommandParameter="{Binding DetailsLst.PdfUrl}" HeightRequest="40" Margin="10,15,10,5" Source="viewcorres.png" HorizontalOptions="EndAndExpand"></ImageButton>
+                          </StackLayout>
+                <Grid RowDefinitions="auto,auto" Margin="0" ColumnDefinitions="auto,auto">
+  <Label Text="{Binding DetailsLst.Title}" FontSize="20" Grid.Row="0" Grid.Column="0"  TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>
+<Label Text="" Grid.Row="0" Grid.Column="1" ></Label>
+                      <Frame BackgroundColor="#f35958" Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" Padding="15,1,15,1">
+                                                                                    <Frame.CornerRadius>
+        <OnPlatform x:TypeArguments="x:Single">
+            <On Platform="iOS" Value="10"/>
+            <On Platform="Android" Value="20"/>
+        </OnPlatform>
+     </Frame.CornerRadius>
+                                                                                <Label Text="{Binding DetailsLst.ClassificationName}" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+                                                                                </Frame>
+                </Grid>
+                <ScrollView  BackgroundColor="{StaticResource BackgroundColor}" Padding="10" Margin="-15,0,-15,0">
+                      <StackLayout>
+                          <Frame>
+
+                              <xct:Expander>
+                                  <xct:Expander.Header>
+
+                              <StackLayout>
+                                  <Grid ColumnDefinitions="auto,auto,auto,auto,auto,auto" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="12"></Setter>
+                                <Setter Property="TextColor" Value="#536d96"></Setter>
+                                                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="10"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Grid.Resources>
+<Image Source="workflowdonecircle.png" VerticalOptions="CenterAndExpand" Grid.Column="0" ></Image>
+    <Label Text="{translator:Translate  Done}" Grid.Column="1" Margin="0,0,5,0"></Label>
+    <Image Source="workflowprogresscircle.png" Grid.Column="2"></Image>
+    <Label Text="{translator:Translate InProgress}" Grid.Column="3" Margin="0,0,5,0"></Label>
+      <Image Source="workflowpendingcircle.png" Grid.Column="4"></Image>
+    <Label Text="{translator:Translate Pending}" Grid.Column="5" ></Label>
+</Grid>
+                                     <StackLayout Orientation="Horizontal">
+                                     <Label Text="{translator:Translate WorkFlow}" Margin="0,0,0,15" TextColor="#536d96" FontAttributes="Bold" FontSize="20"></Label>
+                                              <Image Source="workflowarrow.png" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                          </StackLayout>
+
+                              </StackLayout>
+
+                                      </xct:Expander.Header>
+                                  <xct:Expander.Content>
+                                                                    <StackLayout BindableLayout.ItemsSource="{Binding  DetailsLst.Chart}">
+                                          <BindableLayout.ItemTemplate>
+                                              <DataTemplate>
+                                                                                            <Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="auto,auto,auto">
+                                                                                                <Grid.Resources>
+                                                                                                   <ResourceDictionary>
+                                                                                                             <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="20"></Setter>
+            </Style>
+                                                                                                   </ResourceDictionary>
+                                                                                                </Grid.Resources>
+                                                  <Image Source="workflowdone.png" Margin="0,10,0,0" HeightRequest="30" Grid.Row="0" Grid.Column="0">
+                                                      <Image.Triggers>
+                                                          <DataTrigger TargetType="Image" Binding="{Binding Status}" Value="0">
+                                                              <Setter Property="Source" Value="workflowinprogress.png"></Setter>
+                                                          </DataTrigger>
+                                                             <DataTrigger TargetType="Image" Binding="{Binding Status}" Value="1">
+                                                              <Setter Property="Source" Value="workflowpending.png"></Setter>
+                                                          </DataTrigger>
+                                                      </Image.Triggers>
+                                                  </Image>
+                                              <Image Source="workflowflag.png"  Grid.Row="0" Grid.Column="1"></Image>
+  <Label Text="{Binding role}" HorizontalTextAlignment="End" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" TextColor="#002955" FontSize="16"></Label>
+                                                  <BoxView Color="Gray" HorizontalOptions="CenterAndExpand"  WidthRequest=".5" Grid.Row="1" Margin="10,-7,10,-20" Grid.Column="0"  Grid.RowSpan="2"></BoxView>
+                                              <Image Source="workflowuser.png"  Grid.Row="1" Grid.Column="1"></Image>
+  <Label Text="{Binding name}" Grid.Row="1" Grid.Column="2" TextColor="#002955" FontSize="16"></Label>
+  <Label Text="{Binding date}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" TextColor="#002955" FontSize="16"></Label>
+
+                                                                                            </Grid>
+                                                  </DataTemplate>
+                                          </BindableLayout.ItemTemplate>
+ <BindableLayout.EmptyView>
+                          <Frame BackgroundColor="{StaticResource BackgroundColor}" CornerRadius="15">
+
+                              <Label Text="{translator:Translate NoItemsFound}" TextColor="{StaticResource TitleColor}"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                          </Frame>
+                      </BindableLayout.EmptyView>
+                                  </StackLayout>
+
+                 </xct:Expander.Content>                                             
+  </xct:Expander>
+                          </Frame>
+
+                             <Frame CornerRadius="10">
+                                  <xct:Expander>
+                                      <xct:Expander.Header>
+                                          <StackLayout Orientation="Horizontal">
+                                     <Label Text="{translator:Translate DestinationEntities}" Margin="0,0,0,15" TextColor="#536d96" FontAttributes="Bold" FontSize="20"></Label>
+                                              <Image Source="workflowarrow.png" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                          </StackLayout>
+                                      </xct:Expander.Header>
+                                    <xct:Expander.Content>
+                                    <StackLayout BindableLayout.ItemsSource="{Binding DetailsLst.Destinations}">
+                                          <BindableLayout.ItemTemplate>
+                                              <DataTemplate>
+                                                                                            <Grid RowDefinitions="auto,auto,auto,1" ColumnDefinitions="*,1.5*">
+                                                  <Label Text="{translator:Translate Destination}" FontSize="16" TextColor="#002955"  Grid.Row="0" Grid.Column="0"></Label>
+                                              <Label Text="{Binding destination}" FontSize="14" TextColor="#536d96" Grid.Row="0" Grid.Column="1"></Label>
+  <Label Text="{translator:Translate Instructions}" Grid.Row="1" Grid.Column="0" TextColor="#002955" FontSize="16"></Label>
+                                              <Label Text="{Binding instructions}" FontSize="14" TextColor="#536d96" Grid.Row="1" Grid.Column="1"></Label>
+                                                    <Label Text="{translator:Translate Deadline}" Grid.Row="2" FontSize="16" TextColor="#002955" Grid.Column="0"></Label>
+                                              <Label Text="{Binding date,StringFormat='{0:d MMM , yyyy}'}" FontSize="14" TextColor="#536d96" Grid.Row="2" Grid.Column="1"></Label>
+                                                  <BoxView Color="Gray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></BoxView>
+                                              </Grid>
+                                                  </DataTemplate>
+                                          </BindableLayout.ItemTemplate>
+                                         <BindableLayout.EmptyView>
+                          <Frame BackgroundColor="{StaticResource BackgroundColor}" CornerRadius="15">
+
+                              <Label Text="{translator:Translate NoItemsFound}" TextColor="{StaticResource TitleColor}"  FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                          </Frame>
+                      </BindableLayout.EmptyView>
+                                  </StackLayout>
+                                             </xct:Expander.Content>
+                                  </xct:Expander>
+                          </Frame>
+                       
+                      
+                          <Frame CornerRadius="10">
+                              <xct:Expander>
+                                  <xct:Expander.Header>
+                                              <StackLayout Orientation="Horizontal">
+                                     <Label Text="{translator:Translate EmployeeInCC}" Margin="0,0,0,15" TextColor="#536d96" FontAttributes="Bold" FontSize="20"></Label>
+                                              <Image Source="workflowarrow.png" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                          </StackLayout>
+                                  </xct:Expander.Header>
+                                  <xct:Expander.Content>
+                                                                                                          <StackLayout BindableLayout.ItemsSource="{Binding DetailsLst.CcEmployees}">
+                                          <BindableLayout.ItemTemplate>
+                                              <DataTemplate>
+                                                                                            <Grid RowDefinitions="auto,auto,1" ColumnDefinitions="*,2*" Padding="7" RowSpacing="10">
+                                                  <Label Text="{translator:Translate Name}" FontSize="15" TextColor="#002955"  Grid.Row="0" Grid.Column="0"></Label>
+                                              <Label Text="{Binding Name}" FontSize="14" TextColor="#536d96" Grid.Row="0" Grid.Column="1"></Label>
+                                              <Label Text="{translator:Translate Unit}" Grid.Row="1" Grid.Column="0" TextColor="#002955" FontSize="15"></Label>
+                                              <Label Text="{Binding DepartmentName}" FontSize="14" TextColor="#536d96" Grid.Row="1" Grid.Column="1"></Label>
+
+                                                  <BoxView Color="Gray" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"></BoxView>
+                                              </Grid>
+                                                  </DataTemplate>
+                                          </BindableLayout.ItemTemplate>
+ <BindableLayout.EmptyView>
+                          <Frame BackgroundColor="{StaticResource BackgroundColor}" CornerRadius="15">
+
+                              <Label Text="{translator:Translate NoItemsFound}" TextColor="{StaticResource TitleColor}"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                          </Frame>
+                      </BindableLayout.EmptyView>
+                                  </StackLayout>
+
+                                  </xct:Expander.Content>
+                              </xct:Expander>
+                     
+                          </Frame>
+
+                             <Frame CornerRadius="10">
+                                 <xct:Expander>
+                                     <xct:Expander.Header>
+                                                     <StackLayout Orientation="Horizontal">
+                                     <Label Text="{translator:Translate Attatchements}" Margin="0,0,0,15" TextColor="#536d96" FontAttributes="Bold" FontSize="20"></Label>
+                                              <Image Source="workflowarrow.png" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                          </StackLayout>
+                                     </xct:Expander.Header>
+                                     <xct:Expander.Content>
+                  <StackLayout x:Name="AttachedList" BindableLayout.ItemsSource="{Binding DetailsLst.Files}">
+                                          <BindableLayout.ItemTemplate>
+                                              <DataTemplate>
+                                                                                            <Grid RowDefinitions="auto,1" ColumnDefinitions="auto,*" RowSpacing="5" Padding="7">
+                                                                                                <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BindingContext.OpenFileCommand,Source={x:Reference detailsPage}}" CommandParameter="{Binding Url}"/>
+                    </Grid.GestureRecognizers>
+                                                  <Label Text="&#xf0c6;" FontSize="16" FontFamily="FontAwesome" TextColor="#002955"  Grid.Row="0" Grid.Column="0"></Label>
+                                              <Label Text="{Binding Title}" FontSize="14" TextColor="#536d96" Grid.Row="0" Grid.Column="1"></Label>
+                                                  <BoxView Color="Gray" Grid.Row="1" Grid.Column="0" Margin="3" Grid.ColumnSpan="2"></BoxView>
+                                              </Grid>
+                                                  </DataTemplate>
+                                          </BindableLayout.ItemTemplate>
+                       <BindableLayout.EmptyView>
+                          <Frame BackgroundColor="{StaticResource BackgroundColor}" CornerRadius="15">
+
+                              <Label Text="{translator:Translate NoItemsFound}" TextColor="{StaticResource TitleColor}"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                          </Frame>
+                      </BindableLayout.EmptyView>
+                                  </StackLayout>
+
+                                     </xct:Expander.Content>
+                                 </xct:Expander>
+                          </Frame>
+                             <Frame CornerRadius="10">
+                                 <xct:Expander>
+                                     <xct:Expander.Header>
+                                              <StackLayout Orientation="Horizontal">
+                                     <Label Text="{translator:Translate RelatedCorrespondences}" Margin="0,0,0,15" TextColor="#536d96" FontAttributes="Bold" FontSize="20"></Label>
+                                              <Image Source="workflowarrow.png" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+                                          </StackLayout>
+                                     </xct:Expander.Header>
+                                     <xct:Expander.Content>
+                                                                                                                                               <StackLayout BindableLayout.ItemsSource="{Binding DetailsLst.RelatedCorrespondences}">
+                                          <BindableLayout.ItemTemplate>
+                                              <DataTemplate>
+<StackLayout Padding="0,0,0,10" >
+                                                                                                    <Label HorizontalOptions="FillAndExpand" Text="{Binding Text}" Margin="0" FontSize="14" TextColor="#536d96" Grid.Row="0" Grid.Column="0"></Label>
+                                                    <BoxView Color="Gray" HeightRequest="1"></BoxView>
+
+</StackLayout>
+
+                                             
+                                                  </DataTemplate>
+                                          </BindableLayout.ItemTemplate>
+ <BindableLayout.EmptyView>
+                          <Frame BackgroundColor="{StaticResource BackgroundColor}" CornerRadius="15">
+
+                              <Label Text="{translator:Translate NoItemsFound}" TextColor="{StaticResource TitleColor}"  FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                          </Frame>
+                      </BindableLayout.EmptyView>
+                                  </StackLayout>
+
+                                     </xct:Expander.Content>
+                                 </xct:Expander>
+                        
+                          </Frame>
+                          
+                                    <StackLayout Orientation="Horizontal" Margin="10" IsVisible="{Binding DetailsLst.taskStatus,Converter={StaticResource IntToBoolConverter}}"><!--IsVisible="{Binding DetailsLst.taskStatus,Converter={StaticResource IntToBoolConverter}}"-->
+              <Button Text="{translator:Translate Approve}" Command="{Binding ShowSignatureCommand}"></Button>
+               <Button Text="{translator:Translate Return}" BackgroundColor="#049DD9" Command="{Binding ShowReasonCommand}" CommandParameter="3"></Button>
+               <Button Text="{translator:Translate Reject}" Command="{Binding ShowReasonCommand}" CommandParameter="4" BackgroundColor="#f35958"></Button>
+          </StackLayout>
+                      </StackLayout>
+            </ScrollView>
+                
+            </StackLayout>
+
+        </Grid>
+                        <Grid  IsVisible="{Binding IsShowSignature}">
+                <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                                       <Frame VerticalOptions="CenterAndExpand" CornerRadius="15" Margin="20,0">
+                    <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label Text="{translator:Translate Note}" TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                            <Frame HeightRequest="50" BorderColor="Gray">
+                           <Editor Margin="-20" Placeholder="Note" Text="{Binding Message}"></Editor>
+                        </Frame>
+                        <Label Text="{translator:Translate Signature}" TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                        <StackLayout Orientation="Horizontal">
+                        <Label Text="{translator:Translate UseMyName}" TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                         <CheckBox x:Name="check" IsChecked="{Binding IsUsingNameFSignature}"></CheckBox>
+                        </StackLayout>
+                       <Label Text="{Binding UserName}"   IsVisible="{Binding IsUsingNameFSignature}"></Label>
+                        <Frame HeightRequest="80" BorderColor="Gray" IsVisible="{Binding IsUsingNameFSignature,Converter={StaticResource InverseBoolConverter}}"><!--IsVisible="{Binding IsUsingNameFSignature,Converter={StaticResource InverseBoolConverter}}"-->
+                            <singnature:SignaturePadCanvasView HeightRequest="70" x:Name="signature" StrokeColor="Blue">
+                                 
+                            </singnature:SignaturePadCanvasView>
+                            
+                        </Frame>
+                              <StackLayout Orientation="Horizontal" IsVisible="{Binding DetailsLst.inmyRole}">
+                        <Label Text="Go To Next Level" TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                         <CheckBox  IsChecked="{Binding IsGoToNextLevel}"></CheckBox>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Button Text="{translator:Translate Ok}" Clicked="Button_Clicked_1"></Button>
+                            <Button Text="{translator:Translate Cancel}" BackgroundColor="#f35958" Clicked="Button_Clicked_3"></Button>
+                                                    <Button Text="Clear" Padding="-15" HorizontalOptions="End" Clicked="Button_Clicked_2"></Button>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                </StackLayout>
+ 
+            </Grid>
+
+            <Grid  IsVisible="false">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid>
+                                       <Frame VerticalOptions="CenterAndExpand" CornerRadius="15" Margin="20,0">
+                    <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label Text="Mohamed Khasib" FontSize="18" Margin="0,40,0,0" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>
+                        <Label Text="President Office" TextColor="#536d96"></Label>
+                        <Label Text="Signature: " TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                        <Frame HeightRequest="70" BorderColor="Gray">
+                            <singnature:SignaturePadCanvasView  StrokeColor="Blue"></singnature:SignaturePadCanvasView>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Button Text="{translator:Translate Ok}" Command="{Binding ActionCommand}" CommandParameter="2"></Button>
+                            <Button Text="{translator:Translate Cancel}" BackgroundColor="#f35958" Command="{Binding HideSignatureCommand}"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                            <Image Source="signatureavatar.png" HeightRequest="80" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,-30,0,0"></Image>
+
+                    </Grid>
+                </StackLayout>
+ 
+            </Grid>
+
+                        <Grid  IsVisible="{Binding IsShowReason}">
+                                       <Frame VerticalOptions="CenterAndExpand" CornerRadius="15" Padding="10" Margin="20,0">
+                    <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+    
+                        <Label Text="{translator:Translate Reason}" TextColor="Black" FontSize="16" FontFamily="Montserrat-SemiBold"></Label>
+                        <Frame HeightRequest="70">
+                            <Editor  Margin="-20" Text="{Binding Message}"></Editor>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" Margin="10">
+                            <Button Text="{translator:Translate Ok}" Command="{Binding ActionCommand}"></Button>
+                            <Button Text="{translator:Translate Cancel}" BackgroundColor="#f35958" Command="{Binding HideReasonCommand}"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+ 
+            </Grid>
+                        <controls:Loader IsVisible="{Binding IsLoading}"></controls:Loader>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

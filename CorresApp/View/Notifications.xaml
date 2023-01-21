@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+     xmlns:translator="clr-namespace:CorresApp.Helpers"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:controls="clr-namespace:CorresApp.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        FlowDirection="{Binding FlowDirection}"
+    x:Class="CorresApp.View.Notifications" Title="{translator:Translate Notifications}">
+    <ContentPage.Content>
+        <Grid>
+                <CollectionView ItemsSource="{Binding NotificationsList}"  SelectionChangedCommand="{Binding NavigateToDetailCommand}" SelectedItem="{Binding SelectedNotification}" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                      <Grid Margin="5,5,10,5" Padding="3">
+                                      <Frame Margin="0" Padding="12,15,12,12" CornerRadius="7">
+                                                              <StackLayout>
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="13"></Setter>
+                                    <Setter Property="TextColor" Value="#536d96"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
+                        <Label  Text="{Binding titleTxt}" TextColor="#001955" FontSize="15" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"></Label>
+                       
+                                                   <StackLayout Orientation="Horizontal" Margin="10,0,0,0" Grid.Row="0"  >
+                            <Image Source="inboxcorrescalendar.png" HeightRequest="15"></Image>
+                             <!--<Label Text="Date" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>          -->                                                       
+                            <Label Text="{Binding Date,StringFormat='{0:d MMM , yyyy}'}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+
+                                                              </StackLayout>
+   </Frame>
+                                </Grid>
+                                                            <!--   <controls:CorrespondencesItemTemplet Margin="0,-5,0,0"></controls:CorrespondencesItemTemplet>
+
+                              -->   <!--
+                                <Grid Margin="5,5,10,0" Padding="3">
+                                      <Frame Margin="0" Padding="7" CornerRadius="7">
+                                                              <Grid ColumnDefinitions="50,auto,*" RowDefinitions="auto,*,auto">
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontSize" Value="13"></Setter>
+                                    <Setter Property="TextColor" Value="#536d96"></Setter>
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+                                <Frame HeightRequest="40" Padding="0" Margin="0" Grid.Row="0" Grid.Column="0" BackgroundColor="#049DD9" WidthRequest="40" CornerRadius="25">
+                              <Image Source="inboxincomingnternal.png" HeightRequest="20"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+                          </Frame>
+                        <Label  Text="{Binding title}" TextColor="#001955" FontSize="15" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></Label>
+                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" HorizontalOptions="StartAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="inputusername.png" HeightRequest="15"></Image>
+                                                          <Label Text="from" VerticalOptions="CenterAndExpand" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>                                                                
+                            <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                            </StackLayout>
+                                                                                          <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
+                            <Image Source="inboxcorrescalendar.png" HeightRequest="15"></Image>
+                              <Label Text="Date" TextColor="Black" FontFamily="Montserrat-SemiBold"></Label>                                                                
+                            <Label Text="{Binding date,StringFormat='{0:d MMM , yyyy}'}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>     </Frame>
+                                </Grid>
+-->
+                                <!--
+                                <Grid Margin="10,5,10,5">
+                <Frame CornerRadius="10" Padding="5">
+                    <Frame.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="#90a1bb"></Setter>
+                                                                <Setter Property="FontSize" Value="14"></Setter>
+
+                            </Style>
+                        </ResourceDictionary>
+                    </Frame.Resources>
+                    <Grid ColumnDefinitions="45,*,*,auto" RowDefinitions="auto,*" Padding="10">
+                        <Image Source="notificationicon2.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"></Image>
+                        <Label  Text="{Binding title}" TextColor="#536d96" FontSize="17" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></Label>
+                        <Label Text="{Binding date, StringFormat='{0:MMM dd}'}" Grid.Row="0" Grid.Column="3" ></Label>
+                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                                <StackLayout Orientation="Horizontal" >
+                            <Image Source="inputusername.png" HeightRequest="15"></Image>
+                            <Label Text="{Binding Name}" VerticalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                           <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="2">
+                            <Image Source="multidestinations.png" HeightRequest="15"></Image>
+                            <Label Text="{Binding destination}" VerticalOptions="CenterAndExpand" ></Label>
+                        </StackLayout>
+                        </StackLayout>
+                    
+                    </Grid>
+                </Frame>
+                                </Grid>-->
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <Grid>
+                                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{translator:Translate NoNotificationsFound}"></Label>
+                            </Grid>
+                        </CollectionView.EmptyView>
+                </CollectionView>
+
+            <controls:Loader IsVisible="{Binding IsLoading}"></controls:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
