@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.0.2" package="coma.appslinkAou.corresapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.0.2" package="coma.appslink.corresapp">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
 	<application android:label="AOU CMS " android:theme="@style/MainTheme" android:icon="@drawable/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
@@ -10,7 +10,10 @@
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="msauth" android:host="coma.appslinkAou.corresapp"></data>
+				<!-- AOU Config -->
+				<!--<data android:scheme="msauth" android:host="coma.appslinkAou.corresapp"></data>-->
+				<!--> KApps Config<-->
+				<data android:scheme="msauth" android:host="coma.appslink.corresapp" />
 				<!--<data android:scheme="msauth9c52ece4-893f-4cc3-b1ed-4a529fd01da2" android:host="auth" />
 					<data android:scheme="msauth" android:host="coma.appslinkAou.corresapp" />
 						<data android:scheme="msauth" android:host="coma.appslink.corresapp" />

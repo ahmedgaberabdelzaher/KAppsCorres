@@ -209,4 +209,7 @@
           <data name="SearchValue" xml:space="preserve">
     <value>KeyWords</value>
   </data>
+  <data name="DontHaveSitesMsg" xml:space="preserve">
+    <value>You don't have access permission on the Correspondence System, please check with the system administrator.</value>
+  </data>
 </root>

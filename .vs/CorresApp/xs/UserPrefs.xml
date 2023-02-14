@@ -1,0 +1,65 @@
+﻿<Properties StartupConfiguration="{491BCBAF-9B72-44F2-B648-6B46FE7B4797}|Default">
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.LHS7N18B26002973" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.1.0.1" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="44" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="45" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="43" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="78" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="93" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="94" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/ViewModel/InroViewModel.cs" relfile="CorresApp/ViewModel/InroViewModel.cs" line="95" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Helpers/HttpManager.cs" relfile="CorresApp/Helpers/HttpManager.cs" line="381" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="93" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="100" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="105" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="104" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="102" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="113" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="147" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="140" column="1" />
+      <Breakpoint file="/Users/youxl/KAppsCorres/CorresApp/Services/Classes/MicrosoftAuthService.cs" relfile="CorresApp/Services/Classes/MicrosoftAuthService.cs" line="123" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CorresApp.Android PreferredExecutionTarget="Android.LHS7N18B26002973" AndroidDesignerPreferredTheme="MainTheme" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CorresApp/Services/Classes/MicrosoftAuthService.cs">
+    <Files>
+      <File FileName="CorresApp.Android/Properties/AndroidManifest.xml" />
+      <File FileName="CorresApp/Services/Classes/MicrosoftAuthService.cs" Line="119" Column="1" />
+      <File FileName="CorresApp/App.xaml.cs" />
+      <File FileName="CorresApp/ViewModel/InroViewModel.cs" Line="48" Column="36" />
+      <File FileName="CorresApp/Services/Classes/NotificationServices.cs" />
+      <File FileName="CorresApp/Helpers/HttpManager.cs" Line="359" Column="22" />
+      <File FileName="CorresApp/Model/GetUserSitesBody.cs" Line="8" Column="1" />
+      <File FileName="CorresApp/Model/UserSites.cs" />
+      <File FileName="CorresApp/Resources/LangaugeResource.resx" />
+      <File FileName="CorresApp/Resources/LangaugeResource.ar.resx" />
+      <File FileName="CorresApp/Resources/LangaugeResource.Designer.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CorresApp" expanded="True">
+            <Node name="CorresApp" expanded="True">
+              <Node name="Helpers" expanded="True" />
+              <Node name="Model" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True" />
+              </Node>
+              <Node name="ViewModel" expanded="True" />
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="CorresApp.Android" expanded="True">
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

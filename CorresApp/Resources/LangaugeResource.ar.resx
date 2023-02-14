@@ -210,4 +210,7 @@
             <data name="SearchValue" xml:space="preserve">
     <value> الكلمه المفتاحيه</value>
   </data>
+    <data name="DontHaveSitesMsg" xml:space="preserve">
+    <value>لا يوجد لديك صلاحيات على نظام المراسلات، الرجاء مراجعة مسؤول النظام.</value>
+  </data>
 </root>

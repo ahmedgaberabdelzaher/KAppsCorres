@@ -128,5 +128,12 @@ namespace CorresApp.Resources {
                 return ResourceManager.GetString("ActionCompledMsg", resourceCulture);
             }
         }
+        internal static string DontHaveSitesMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("DontHaveSitesMsg", resourceCulture);
+            }
+        }
     }
 }

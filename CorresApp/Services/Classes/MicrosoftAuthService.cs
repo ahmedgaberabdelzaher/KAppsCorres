@@ -12,15 +12,26 @@ namespace CorresApp.Services.Classes
 {
     public class MicrosoftAuthService : IMicrosoftAuthService
     {
-       // private readonly string ClientID = "8b31b9a8-f3d5-4919-bc1d-7888ce292169";
-        private readonly string ClientID = "9c52ece4-893f-4cc3-b1ed-4a529fd01da2";
-
         // private readonly string[] Scopes = { "User.Read", "MailboxSettings.Read", "https://khapps.sharepoint.com/.default","https://khapps.sharepoint.com/Sites.ReadWrite.All" };
-      //  private readonly string[] Scopes = { "https://khapps.sharepoint.com/.default" };
-        private readonly string[] Scopes = { "https://arabou.sharepoint.com/.default" };
+        /// <summary>
+        /// khapps Configs
+        /// </summary>
+       // private readonly string[] Scopes = {   "https://khapps.sharepoint.com/.default" };
+        private readonly string[] Scopes = { "https://eblacorp.sharepoint.com/.default" };
+        private readonly string RedirectUrl = "msauth://coma.appslink.corresapp";
+        private readonly string ClientID = "8b31b9a8-f3d5-4919-bc1d-7888ce292169";
+        private readonly string AuthorityLink = "https://login.microsoftonline.com/kappshub.com";
+        /// <summary>
+        /// AOU Config
+        /// </summary>
+        //  private readonly string[] Scopes = { "https://arabou.sharepoint.com/.default" };
+        //private readonly string RedirectUrl = "msauth://coma.appslinkAou.corresapp";
+        // private readonly string ClientID = "9c52ece4-893f-4cc3-b1ed-4a529fd01da2";
+        // private readonly string AuthorityLink = "https://login.microsoftonline.com/arabou.edu.kw";
+
+
         private readonly string GraphUrl = "https://graph.microsoft.com/v1.0/me";
-      //  private readonly string RedirectUrl = "msauth://coma.appslink.corresapp";
-        private readonly string RedirectUrl = "msauth://coma.appslinkAou.corresapp";
+   
 
         private IPublicClientApplication publicClientApplication;
 
@@ -105,14 +116,23 @@ namespace CorresApp.Services.Classes
                     {
                         var authResult = await this.publicClientApplication.AcquireTokenInteractive(Scopes)
                                                     .WithParentActivityOrWindow(ParentWindow).WithUseEmbeddedWebView(true)//.
-                                                                                                                          . WithAuthority("https://login.microsoftonline.com/arabou.edu.kw")
-                                                                                                    // .WithAuthority("https://login.microsoftonline.com/kappshub.com")
+                                                                                                                       //   . WithAuthority("https://login.microsoftonline.com/arabou.edu.kw")
+                                                                                                     .WithAuthority(AuthorityLink)
 
                                                     .ExecuteAsync();
                         var account = authResult.Account;
-                        var authResultForGraphScopes = await this.publicClientApplication.AcquireTokenSilent(new[] { "User.Read"}, account)
+                      
+                        try
+                        {
+                            var authResultForGraphScopes = await this.publicClientApplication.AcquireTokenSilent(new[] { "User.Read"}, account)
                    .ExecuteAsync();
                         currentUser = await this.RefreshUserDataAsync(authResultForGraphScopes?.AccessToken).ConfigureAwait(false);
+
+                        }
+                        catch (Exception exp)
+                        {
+                          
+                        }
                         Preferences.Set("token", authResult.AccessToken);
                         Preferences.Set("email", authResult.Account.Username);
                     }

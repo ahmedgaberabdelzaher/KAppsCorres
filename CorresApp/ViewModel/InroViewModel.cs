@@ -56,6 +56,7 @@ namespace CorresApp.ViewModel
                         }
                         else
                         {
+                            
                             return;
                         }
                     }
@@ -66,7 +67,12 @@ namespace CorresApp.ViewModel
                     await NavigationService.NavigateAsync("../DashBoard");
                     Preferences.Set("IsLogedIn", true);
                 }
-              IsLoading = false;
+               else
+                {
+                  await  DialogService.DisplayAlertAsync("",LangaugeResource.DontHaveSitesMsg,"Ok");
+                    SignOutAsync();
+                }
+                IsLoading = false;
             }
             catch (Exception ex)
             {
@@ -84,15 +90,15 @@ namespace CorresApp.ViewModel
             try
             {
                 IsLoading = true;
-                var model = new GetUserSitesBody() { Email = Preferences.Get("email", "") };
+                var model = new GetUserSitesBody() { Email = Preferences.Get("email", ""), Token = Preferences.Get("token", "") };
                 var resp = await _notificationServices.GetUserSitesService(model);
                 if (resp.IsSuccessStatusCode)
                 {
                     var result = await resp.Content.ReadAsStringAsync();
-                    var userSites = JsonConvert.DeserializeObject<ObservableCollection<UserSites>>(result);
-                    if (userSites != null)
+                    var userSites = JsonConvert.DeserializeObject<UserSitesResponse>(result);
+                    if (userSites != null&&userSites.data!=null)
                     {
-                       return userSites;
+                       return userSites.data;
                     }
                 }
                 return null;
